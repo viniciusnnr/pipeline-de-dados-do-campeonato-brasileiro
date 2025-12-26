@@ -13,7 +13,9 @@ python, docker, airflow, AWS S3, AWS Glue, AWS Athena e Football-Data.org API.
 API → ETL (Airflow) → S3 → Glue (catálogo) → Athena (SQL)
 
 ### Pré-requisitos:
-Docker Desktop, conta AWS com acesso a um bucket no S3, Glue e Athena, além do uso de AWS CLI, chave da API do Football Data Org.
+- docker desktop
+- conta AWS com acesso a um bucket no S3, Glue e Athena, além do uso de AWS CLI.
+- chave da API do Football Data Org.
 O usuário AWS precisa de uma policy com permissões do S3 e do GLue:  
 - S3: `s3:ListBucket`, `s3:GetObject`, `s3:PutObject`.
 - Glue: `glue:CreateDatabase`, `glue:GetDatabase`, `glue:GetDatabases`,  
@@ -31,11 +33,12 @@ cd pipeline-de-dados-do-campeonato-brasileiro
 nano .env
 ```
 Preencha no .env:
+- AIRFLOW_UID=
 - FOOTBALL_DATA_URL=
 - FOOTBALL_DATA_API_KEY=
 - S3_BUCKET= 
 
-3º Build, Inicialização do airflow e Subir o container:
+3º Build da imagem, Inicialização do airflow e Subir o container:
 ```bash
 docker compose build
 ```
@@ -49,7 +52,7 @@ docker compose up -d
 ```
 
 4º Acesso ao airflow e execução do pipeline
-Acesse `http://localhost:8080` e execute a DAG
+Acesse `http://localhost:8080` e execute a DAG. O usuário e senha padrão são `airflow`
 
 ### Resultados:
 ao final, os dados ficam no S3, são catalogados no Glue e podem ser consultados com SQL via Athena.
