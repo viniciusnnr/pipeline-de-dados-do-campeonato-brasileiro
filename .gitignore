@@ -1,0 +1,17 @@
+#
+.env
+
+#
+**/__pycache__/
+*.pyc
+.DS_Store
+
+#
+logs/*
+!logs/.gitkeep
+
+#
+data/raw/*
+!data/raw/.gitkeep
+data/trusted/*
+!data/trusted/.gitkeep
